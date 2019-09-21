@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .angular-header {
+        display: grid;
+        grid-template-areas: "brand nav" ;
+        width:100%;
+        padding: 0;
+        top: 0;
+        right: 0;
+    }
+    .brand {
+        grid-area: brand;
+    }
+
+    .nav-1 {
+        grid-area: nav;
+    }
+
+    .menu {
+
+        display: none;
+    }
+
+    @media screen and (max-width: 800px) {
+
+        a {
+            display: none;
+        }
+
+        .Register {
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            display: block;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <header class="angular-header">
+            <span class="brand greetings greetings-scrolled ">
+                <!-- Brand name -->
+                <span>z</span><span>z</span><span>a</span><span>p</span>.</span><span style="color: #ea4335"></span><span
+                style="color: #fbbc05;"></span><span style="color: #34a853;">
+            </span> <span style="font-weight:200"></span>
+            </span>
+            <!-- Navigate -->
+            <nav class="nav-1">
+                <!-- Home route -->
+                <a href="#" class="toggle" onclick="setHome()"
+                    style="font-weight: bold;text-decoration: none;margin: 0px 20px">Home</a>
+                <!-- contact-us route -->
+                <a href="#contact-us"
+                    style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px"
+                    onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Contact Us</a>
+                <!-- Registeration route -->
+                <a href="#"
+                    style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px"
+                    onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'"
+                    onclick="toggle_login()">Sign In</a>
+                <a href="Registernew.html" style="text-decoration: none" class="Register">Sign Up</a>
+                <a class="menu" href="Registernew.html" style="text-decoration: none" class="Register">Menu</a>
+            </nav>
+        </header>
+        <!-- <div class="main-content">
+            <div style="width: 100%" class="heading" id="About">
+                
+                <div class=" subheading"
+                    style="width:auto;height: auto;color: #363636; padding:60px 10px 40px 20px;font-weight: 600">
+                    <span class="superscript">WE PROMISE THAT</span>
+                    <div class="mainscript">
+                        We work with you to <br>solve your most critical<br>business priorities.
+                    </div>
+                    <div class="subscript">
+                        We're a team of makers, thinkers, explorers and theatre singers, <br>play with curiosity and
+                        experimentation, using what we learn to create<br>
+                        meaningful digital products that connect with people.
+                    </div>
+                    <div class="link-buttons">
+                        <button class="btn-learn" onClick="parent.open('https://dribbble.com/Saikatkumar')"
+                            style="outline: none">Learn more</button>
+                        <button class="btn-gs" Onclick="alert('Get Started')" style="outline: none">Get Started</button>
+                    </div>
+                </div>
+                <div class="img-content" style="width:50%">
+                    <img id="myDIV" class=" illus" src="work.png" alt="new" style="display: block;width:90%; height:90%">
+                </div>
+            </div>
+        </div>
+    </div> -->
+</body>
+</html>
