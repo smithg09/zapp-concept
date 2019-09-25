@@ -3,6 +3,15 @@
     Title: Zapp.Concept (Jquery min).
     Date: 12 September 2019
 */
+$(window).on('load', function () {
+    setTimeout(function () {
+        console.log("Windows load event done!");
+        $('.preloader').fadeOut('slow');
+        $('body').css("overflow", "visible");    
+    }, 1000); // set the time here
+});
+
+
 
 //Expand Customer Support element on click | Add Animation => Display Lorem Ipsum message => Remove Animation
 $(document).ready(() => {

@@ -29,15 +29,37 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" type="text/css" href="templatestyle.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" type="text/css" href="preloader.css">
     
 </head>
 <!-- Invoke toggle function on scroll to compress navigation bar -->
-<body >
-    <!-- 
+<body id="body">
+<div class="preloader" id="preloader">
+    <div class="loader">
+        <svg viewBox="0 0 80 80">
+            <circle id="test" cx="40" cy="40" r="32"></circle>
+        </svg>
+    </div>
+
+    <div class="loader triangle">
+        <svg viewBox="0 0 86 80">
+            <polygon points="43 8 79 72 7 72"></polygon>
+        </svg>
+    </div>
+
+    <div class="loader">
+        <svg viewBox="0 0 80 80">
+            <rect x="8" y="8" width="64" height="64"></rect>
+        </svg>
+    </div>
+</div>   
+<!-- 
         Display Upsupported message on screen size < 800 pixels
      -->
     <div class="unsupported">
@@ -74,7 +96,7 @@
                     </a>
                     
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <div classhttps://github.com/smithg09/zapp-website="dropdown-item">
+                    <div classhttps://github.com/smithg09/zapp-website="dropdown-item" style="display: flex;font-size: 15px;align-items: end;letter-spacing: 1px;font-weight: lighter;">
                         <a class="account" href="#"> </a>
                         <span> <?php  echo $_SESSION["username"] ?> </span>
                     </div>
@@ -82,7 +104,7 @@
                     <a href="#" class="dropdown-item logout"
                             style="font-size:16px;scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;"
                             onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Log out</a>
-                    <a class="dropdown-item" href="#">Account Settings</a>
+                    <a class="dropdown-item" href="accounts.php">Account Settings</a>
                 </div>
         </div>
             
@@ -202,6 +224,7 @@
                 var p = document.createElement("p");
                 var img = document.createElement("img");
                 img.setAttribute("src",element.imgurl);
+                img.classList.add('img-temp');
                 p.innerHTML = element.name;
 
                 container.appendChild(p);

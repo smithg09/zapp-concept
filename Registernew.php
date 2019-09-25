@@ -38,7 +38,7 @@
             <div class="Register-dialog">
                     <span class="regis">Sign Up</span>
                     <!-- Registeration Form -->
-                    <form class="signup-form" name="contactForm" onsubmit="return validateForm()">
+                    <form class="signup-form" name="registration contactForm" action="registration.php" method="post" >
                             <input  class="rg-input" name="name" type="text"  placeholder="Name" />
                             <!-- Error message  -->
                             <div class="error" id="nameErr"></div>
@@ -56,7 +56,7 @@
                                     <option value="Female">Female</option>
                                 </select>
                             <div class="error" id="genderErr2"></div>   <br>
-                        <button class="btn-submit">Sign Up</button>
+                        <button class="btn-submit" type="submit" name="btn-signup">Sign Up</button>
                     </form>
             </div>
         </div>
@@ -174,15 +174,10 @@
                         if ((nameErr || emailErr || mobileErr || countryErr || genderErr || genderErr2) == true) {
                             return false;
                         } else {
-                            // Creating a string from input data for preview
-                            var dataPreview = "You've entered the following details: \n" +
-                                "Full Name: " + name + "\n" +
-                                "Email Address: " + email + "\n" +
-                                "Password   : " + password + "\n" +
-                                "Address: " + Address + "\n" +
-                                "Gender: " + gender + "\n";
+                            return true;
+                            // Creating a string from 
                             // Display input data in a dialog box before submitting the form
-                            alert(dataPreview);
+                            // alert(dataPreview);
                         }
                     };
 

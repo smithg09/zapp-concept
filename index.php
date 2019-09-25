@@ -12,7 +12,7 @@
             Title: qZapp. Concept Webpage.
             Date: 12 September 2019 
         -->
-
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -24,24 +24,45 @@
     <title>zzap.</title>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css?version2">
-    
+    <link rel="stylesheet" type="text/css" href="preloader.css">
     
 </head>
 <!-- Invoke toggle function on scroll to compress navigation bar -->
-<body onscroll="toggle()">
+<body onscroll="toggle()" id="body">
+<div class="preloader" id="preloader">
+    <div class="loader">
+        <svg viewBox="0 0 80 80">
+            <circle id="test" cx="40" cy="40" r="32"></circle>
+        </svg>
+    </div>
+
+    <div class="loader triangle">
+        <svg viewBox="0 0 86 80">
+            <polygon points="43 8 79 72 7 72"></polygon>
+        </svg>
+    </div>
+
+    <div class="loader">
+        <svg viewBox="0 0 80 80">
+            <rect x="8" y="8" width="64" height="64"></rect>
+        </svg>
+    </div>
+</div>
+
     <!-- 
         Display Upsupported message on screen size < 800 pixels
      -->
     <div class="unsupported">
         <h1>Not supported on mobile devices yet.</h1>
     </div>
-    <main>
+    <main style="background:white">
     
     <!-- Navigation bar section -->
     <header class="col-12 angular-header">
          <span class="brand greetings greetings-scrolled " style="display: flex;justify-content: center;align-items: center;"> 
              <!-- Brand name -->
-            <span>z</span><span>z</span><span>a</span><span>p</span>.    
+            <img src="images/slack.png" alt="new" style="position: relative;margin: 0;top: 4px;width: 70px;  height: 50px;">
+             <span>z</span><span>z</span><span>a</span><span>p</span>.    
             <?php 
             if(isset($_SESSION["username"]))
             { 
@@ -64,7 +85,7 @@
                 onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'" onclick="toggle_login()">Sign In</a>
             
             <!--Registeration route  -->
-            <a href="Registernew.html" style="text-decoration: none" class="Register">Sign Up</a>
+            <a href="Registernew.php" style="text-decoration: none" class="Register">Sign Up</a>
         </nav>
     </header>
 
@@ -94,7 +115,7 @@
             
                 <div class="main-login" style="display:none">
                     <span class="dummy">Sign in</span>
-                    <span class="dummyUP"><a style="text-decoration: none" href="Registernew.html">Sign Up</a></span>
+                    <span class="dummyUP"><a style="text-decoration: none" href="Registernew.php">Sign Up</a></span>
                     
                     <div class="Login" style="display: block">
                         <div class="animate">

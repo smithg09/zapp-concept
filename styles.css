@@ -8,10 +8,25 @@ html {
   scroll-behavior: smooth;
 }
 
+#body {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 6px; 
+    background: rgb(202, 202, 202);  
+}
+
+::-webkit-scrollbar-thumb {
+    background: #33415d;
+    border-radius: 50px;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   scroll-behavior: smooth;
+  /* overflow: hidden; */
 }
 
 
@@ -609,7 +624,7 @@ img {
 
 .greetings-scrolled {
   transition: all 200ms;
-  font-size: 3vw;
+  font-size: 35px;
   text-rendering: optimizeLegibility;
   color: #33415d;
   font-family: "Product Sans", Arial, Helvetica, sans-serif;
@@ -620,11 +635,11 @@ img {
   font-weight: 600;
 }
 .greetings {
-  font-size: 28px;
+  font-size: 40px;
   transition: all 200ms;
   text-rendering: optimizeLegibility;
   color: #33415d;
-  font-family: "Product Sans", Arial, Helvetica, sans-serif;
+  font-family: "Varela Round", sans-serif;
   font-style: normal;
   letter-spacing: 1.2px;
   padding: 0px 10px;
@@ -960,8 +975,8 @@ a:hover {
 }
 
 img {
-  width: 200px;
-  height: 80px;
+  width: 0px;
+  height: 0px;
 }
 
 .article-content {

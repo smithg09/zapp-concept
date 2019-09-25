@@ -1,49 +1,65 @@
 <?php
-/*
-Author: Javed Ur Rehman
-Website: http://www.allphptricks.com/
-*/
-?>
+session_start();
+if(isset($_SESSION['user'])!="")
+{
+	header("Location: home.php");
+}
+include_once 'db.php';
 
-<!DOCTYPE html>
-<html>
+if(isset($_POST['btn-signup']))
+{
+	$uname = mysqli_real_escape_string($con, $_POST['uname']);
+	$email = mysqli_real_escape_string($con, $_POST['email']);
+	$upass = md5(mysqli_real_escape_string($con, $_POST['pass']));
+	
+	if(mysqli_query($con, "INSERT INTO users(email,password,name) VALUES('".$uname."','".$email."','".$upass."')"))
+	{
+            $msg = 'Congratulation you have successfully registered.';
+		
+        
+       
+	}
+	else
+	{
+            $msg = 'Error while registering you...';
+	
+       
+        
+	}
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<title>Registration</title>
-<link rel="stylesheet" href="css/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login & Registration System</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+
 </head>
 <body>
-<?php
-	require('db.php');
-    // If form submitted, insert values into the database.
-    if (isset($_REQUEST['username'])){
-		$username = stripslashes($_REQUEST['username']); // removes backslashes
-		$username = mysqli_real_escape_string($con,$username); //escapes special characters in a string
-		$email = stripslashes($_REQUEST['email']);
-		$email = mysqli_real_escape_string($con,$email);
-		$password = stripslashes($_REQUEST['password']);
-		$password = mysqli_real_escape_string($con,$password);
-
-		$trn_date = date("Y-m-d H:i:s");
-        $query = "INSERT into `users` (username, password, email, trn_date) VALUES ('$username', '".md5($password)."', '$email', '$trn_date')";
-        $result = mysqli_query($con,$query);
-        if($result){
-            echo "<div class='form'><h3>You are registered successfully.</h3><br/>Click here to <a href='login.php'>Login</a></div>";
-        }
-    }else{
-?>
-<div class="form">
-<h1>Registration</h1>
-<form name="registration" action="" method="post">
-<input type="text" name="username" placeholder="Username" required />
-<input type="email" name="email" placeholder="Email" required />
-<input type="password" name="password" placeholder="Password" required />
-<input type="submit" name="submit" value="Register" />
+<center>
+<div id="login-form">
+<form method="post">
+    <?php echo @$msg;?>
+<table align="center" width="30%" border="0">
+<tr>
+<td><input type="text" name="uname" placeholder="User Name" required /></td>
+</tr>
+<tr>
+<td><input type="email" name="email" placeholder="Your Email" required /></td>
+</tr>
+<tr>
+<td><input type="password" name="pass" placeholder="Your Password" required /></td>
+</tr>
+<tr>
+<td><button type="submit" name="btn-signup">Sign Me Up</button></td>
+</tr>
+<tr>
+<td><a href="index.php">Sign In Here</a></td>
+</tr>
+</table>
 </form>
-<br /><br />
-<a href="http://www.allphptricks.com/simple-user-registration-login-script-in-php-and-mysqli/">Tutorial Link</a> <br /><br />
-For More Web Development Tutorials Visit: <a href="http://www.allphptricks.com/">AllPHPTricks.com</a>
 </div>
-<?php } ?>
+</center>
 </body>
 </html>
