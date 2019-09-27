@@ -101,8 +101,7 @@
                         <span style=""> <?php  echo $_SESSION["username"] ?> </span>
                     </div>
                     <div class="dropdown-divider"> </div>   
-                    <a href="#" class="dropdown-item logout"
-                            >Log out</a>
+                    <a href="#" class="dropdown-item logout">Log out</a>
                     <a class="dropdown-item" href="accounts.php">Account Settings</a>
                 </div>
         </div>
