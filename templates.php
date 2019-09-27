@@ -95,15 +95,14 @@
                 <a class=" dropdown-toggle account" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </a>
                     
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <div classhttps://github.com/smithg09/zapp-website="dropdown-item" style="display: flex;font-size: 15px;align-items: end;letter-spacing: 1px;font-weight: lighter;">
-                        <a class="account" href="#"> </a>
-                        <span> <?php  echo $_SESSION["username"] ?> </span>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="border:none;box-shadow:0px 0px 10px rgba(200,200,200,0.8);left:-10px !important">
+                    <div classhttps://github.com/smithg09/zapp-website="dropdown-item" style="margin:0px 19px;display: flex;flex-direction:column;font-size: 15px;align-items: center;justify-content:center;letter-spacing: 1px;font-weight: lighter;">
+                        <a class="account-in account" href="#"> </a>
+                        <span style=""> <?php  echo $_SESSION["username"] ?> </span>
                     </div>
                     <div class="dropdown-divider"> </div>   
                     <a href="#" class="dropdown-item logout"
-                            style="font-size:16px;scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;"
-                            onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Log out</a>
+                            >Log out</a>
                     <a class="dropdown-item" href="accounts.php">Account Settings</a>
                 </div>
         </div>

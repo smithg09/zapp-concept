@@ -7,7 +7,6 @@
     color: #33415d;
 }
 
-
 img-temp {
     width: 300px;
     height: 200px;
@@ -43,6 +42,12 @@ width:calc(100% - 750px);
     border-radius: 5px;
 }
 
+.dropdown-item:active {
+    color: #33415d;
+    text-decoration: none;
+    background-color: #e8e8e8; 
+}
+
 .account {
     border-radius: 100%;
     width: 40px;
@@ -60,7 +65,14 @@ width:calc(100% - 750px);
     margin: 0px 0px 0px 20px;
     display: flex;
     background-image: url("images/mine.jpg");
-    background-size: contain; 
+    background-size: cover; 
+}
+
+.account-in{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    
 }
 
 .account:active {
