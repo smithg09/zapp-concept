@@ -1,0 +1,32 @@
+.editorwrapper {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    height: 100%;
+    width: 350px;
+    background: #33415d;
+}
+
+#mm-canvas {
+    width: 100% !important; 
+    height: 100% !important;
+}
+
+.maineditorsec {
+    height: 100%;
+    width: 100%;
+    background: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.videowrapper {
+    width: 500px;
+    height: 400px;
+    opacity: 0.8;
+    background: #33415d;
+}

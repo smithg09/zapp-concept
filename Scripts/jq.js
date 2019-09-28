@@ -3,6 +3,22 @@
     Title: Zapp.Concept (Jquery min).
     Date: 12 September 2019
 */
+$chcan = false;
+$(document).ready(() => {
+    $(".usernamechange").click(() => {
+        if (!$chcan) {
+            $chcan = true;
+            $(".usernamechangeinput").removeAttr("disabled");
+            $(".usernamechange").html("Cancel");
+        }
+        else {
+            $chcan = false;
+            $(".usernamechangeinput").attr("disabled", true);
+            $(".usernamechange").html("Change"); 
+        }
+    })
+})
+
 $(window).on('load', function () {
     setTimeout(function () {
         console.log("Windows load event done!");

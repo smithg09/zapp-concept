@@ -98,12 +98,81 @@
             </div>
             <div class="accounts-wrapper" >
                 <div class="accdetails">
-                    <span> USERNAME </span>
-                    <span> Email </span>
-                    <span> Password </span>
-                    <span> Account Plan </span>
-                    <span> Account id </span>
-                    <span> Phone Number </span>
+                    <div class="username">
+                        <span class="userheader"> USERNAME </span>
+                        <div class="inputwrapper">
+                            <input type="text" class="userinput usernamechangeinput" id="usernamechangeinput" disabled>
+                            <script>
+                                document.getElementById("usernamechangeinput").value = "<?php  echo $_SESSION["name"] ?>";
+                            </script>
+                        </div>
+                    </div>
+                    <div class="username">
+                        <span class="userheader"> EMAIL </span>
+                        <div class="inputwrapper">
+                            <input type="text" class="userinput" id="emailchangeinput" placeholder="smith" disabled>
+                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;">Change</span>
+                            <span class="usernamechange" style="margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">Submit</span>
+                            <script>
+                                document.getElementById("emailchangeinput").value = "<?php  echo $_SESSION["username"] ?>";
+                            </script>
+                        </div>
+                    </div>
+                    <div class="username">
+                        <span class="userheader"> PASSWORD </span>
+                        <div class="inputwrapper">
+                            <input type="password" value="safhjasyvf" class="userinput" disabled>
+                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;">Change</span>
+                            <span class="usernamechange" style="margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">Submit</span>
+                        </div> 
+                    </div>
+                    <div class="username">
+                        <span class="userheader"> ACCOUNT TYPE </span>
+                        <div class="inputwrapper">
+                            <input type="text" class="userinput" disabled>
+                            <span style="margin-left: 20px;color: #435069;cursor: pointer;font-size: 15px;">Upgrade</span>
+                        </div> 
+                    </div>
+                    <div class="username">
+                        <span class="userheader"> ACCOUNT ID </span>
+                        <div class="inputwrapper">
+                            <input type="text" class="userinput" disabled>
+
+                        </div> 
+                    </div>
+                    <div class="username">
+                        <span class="userheader"> PHONE NUMBER </span>
+                        <div class="inputwrapper">
+                            <input type="text" class="userinput" disabled>
+                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;">Change</span>
+                            <span class="usernamechange" style="margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">Submit</span>
+                        </div> 
+                    </div>
+                </div>
+                <div class="teamdetails" style="margin-top:20px">
+                    <h1 class="temp" style="margin-bottom: 21px;font-size:40px;display:flex; align-items:baseline" >Team</h1>
+                    <div class="username">
+                        <span class="userheader"> TEAM NAME </span>
+                        <div class="inputwrapper">
+                            <input type="text" class="userinput usernamechangeinput" disabled>
+                           
+                        </div>
+                    </div>
+                    <div class="username">
+                        <span class="userheader"> TEAM ID </span>
+                        <div class="inputwrapper">
+                            <input type="text" class="userinput" placeholder="smith" disabled>
+                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;">Change</span>
+                            <span class="usernamechange" style="margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">Submit</span>
+                        </div>
+                    </div>
+                    <div class="username">
+                        <span class="userheader"> TEAM MEMBERS </span>
+                        <span style="font-size: 14px;color: grey;letter-spacing: 1px;background: #eeeeee;border-radius: 3px;width: fit-content;padding: 7px 10px 10px 10px;margin:10px 10px">Smith Gajjar </span>
+                        <span style="font-size: 14px;color: grey;letter-spacing: 1px;background: #eeeeee;border-radius: 3px;width: fit-content;padding: 7px 10px 10px 10px;margin:10px 10px">Amay Chug </span>
+                        <span style="font-size: 14px;color: grey;letter-spacing: 1px;background: #eeeeee;border-radius: 3px;width: fit-content;padding: 7px 10px 10px 10px;margin:10px 10px">Jatin Bhagchandani </span>
+                        <span class="addmember" >Add member</span>
+                    </div>
                 </div>
             </div>
         </section>
