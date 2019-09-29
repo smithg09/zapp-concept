@@ -5,7 +5,7 @@ Website: http://www.allphptricks.com/
 */
 
 
-$con = mysqli_connect("localhost","root","","Demo");
+$con = mysqli_connect("localhost","root","","zapp");
 // Check connection
 if (mysqli_connect_errno())
   {

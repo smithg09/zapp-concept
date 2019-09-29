@@ -1,12 +1,24 @@
 <?php
     require('db.php');
     session_start();
+    $type = $_SESSION['acc_type'];
+    if($type == 'premium') {
+        $query = "SELECT * FROM `templates` ";
+    }
+    else {
+        $query = "SELECT * FROM `templates` WHERE acc_type = '$type' ";
+    }
 
-    $query = "SELECT * FROM `templates`";
     $tempresult = mysqli_query($con,$query);
-    $row    = mysqli_fetch_array($tempresult);
+    $emparray = array();
+    while($row =mysqli_fetch_assoc($tempresult))
+    {
+        $emparray[] = $row;
+    }
+
     // while
 ?>
+
 <html lang="en">
 
 <head>
@@ -39,7 +51,7 @@
     
 </head>
 <!-- Invoke toggle function on scroll to compress navigation bar -->
-<body id="body">
+<body id="body" style="display:block">
 <div class="preloader" id="preloader">
     <div class="loader">
         <svg viewBox="0 0 80 80">
@@ -115,9 +127,13 @@
     <section class="temp_sec" style="padding-top:100px">
             <h1 class="temp">Pick a Template</h1>
             
-            <div id="main-content">
-               
-        </div>
+            <form action="templateroute.php" method="POST" style="margin-top:0"> 
+                <div id="main-content">
+                
+                </div>
+                <button type="submit" class="temp_submit"> Next </button>
+            </form>
+
     </section>
 
     <!-- Customer Support element 
@@ -166,49 +182,48 @@
     </footer>
     </main>
     <script>
-        var list2  = <?php echo " [{ name: '".  $_SESSION["name"]  ."', content: 'videos ',imgurl: 'IMG-20181109-WA0002_1543151044776.jpg.jpg' } , { name: 'SYNC', content: 'videos ',imgurl: 'IMG-20181109-WA0002_1543151044776.jpg.jpg' } ]"; ?>;
-            console.log(list2);
-
-           var list = [
-            {
-                name: 'SYNC', 
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/IMG-20181109-WA0002_1543151044776.jpg.jpg",
-            },
-            {
-                name: 'DONE',
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/robo.jpg",
-            },
-            {
-                name: 'BIRTHDAY',
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/cor.jpg",
-            },
-            {
-                name: 'PULLOUTS',
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/2730921.jpg",
-            }, {
-                name: 'NEWDAY',
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/2598578.jpg",
-            }, {
-                name: 'ORCS',
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/465293-PGDOIV-851.jpg",
-            }, {
-                name: 'PYHROA',
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/char.png",
-            }, {
-                name: 'MOBILE',
-                content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
-                imgurl: "images/work.png",
-            }
-        ];
-
+        var list =  <?php   echo json_encode($emparray); ?>;
         console.log(list);
+        //    var list = [
+        //     {
+        //         name: 'SYNC', 
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/IMG-20181109-WA0002_1543151044776.jpg.jpg",
+        //     },
+        //     {
+        //         name: 'DONE',
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/robo.jpg",
+        //     },
+        //     {
+        //         name: 'BIRTHDAY',
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/cor.jpg",
+        //     },
+        //     {
+        //         name: 'PULLOUTS',
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/2730921.jpg",
+        //     }, {
+        //         name: 'NEWDAY',
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/2598578.jpg",
+        //     }, {
+        //         name: 'ORCS',
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/465293-PGDOIV-851.jpg",
+        //     }, {
+        //         name: 'PYHROA',
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/char.png",
+        //     }, {
+        //         name: 'MOBILE',
+        //         content: "This is your workspace, you can create videos from scratch or <br> you can use our predefined templates to build quik Videos or your own story.<br> <h4>World’s most versatile video creator for Quick & Professional videos.</h4>",
+        //         imgurl: "images/work.png",
+        //     }
+        // ];
+
+        // console.log(list);
 
         function myFunction() {
             
@@ -218,18 +233,38 @@
 
             list.forEach(element => {
                 var node = document.getElementById("main-content");
+                var maincontainer = document.createElement("div");
+                maincontainer.classList.add("maincontainer");
+
                 var container = document.createElement("div");
                 container.classList.add("container");
+
+                var input = document.createElement("input");
+                input.classList.add("hidden-radio");
+                input.setAttribute("name","templates");
+                input.setAttribute("type","radio");
+                input.setAttribute("value",element.temp_id);
+                input.required = true;
+
                 var p = document.createElement("p");
-                var img = document.createElement("img");
-                img.setAttribute("src",element.imgurl);
-                img.classList.add('img-temp');
-                p.innerHTML = element.name;
+                p.innerHTML = element.temp_name;
 
+                // var img = document.createElement("img");
+                // img.setAttribute("src",element.imgurl);
+                // img.classList.add('img-temp');
+                if(element.acc_type == 'premium' )   {
+                    var premiumelem = document.createElement('p');
+                    premiumelem.classList.add('premiumdiv');
+                    premiumelem.innerHTML = '&#x2605;';
+                    container.appendChild(premiumelem);  
+                }
                 container.appendChild(p);
-                container.appendChild(img);
+                // container.appendChild(img);
+                maincontainer.appendChild(input);
 
-                node.appendChild(container);
+                maincontainer.appendChild(container);
+
+                node.appendChild(maincontainer);
                 
             })
 

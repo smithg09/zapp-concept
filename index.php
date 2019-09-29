@@ -12,6 +12,7 @@
             Title: qZapp. Concept Webpage.
             Date: 12 September 2019 
         -->
+    <script src="https://kit.fontawesome.com/f5df066031.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,17 +121,17 @@
                     <div class="Login" style="display: block">
                         <div class="animate">
                             <span class="h1">Welcome to <span class="subh1">zzap.</span></span>
-                            <form name="contactForm" method="POST" action="login.php">
+                            <form name="contactForm" id="myForm" onsubmit="doLoginnow()" method="POST" action="login.php">
                                 <!-- <input class="rg-input" name="name" type="text" placeholder="Name" /> -->
                                 <!-- Error message  -->
                                 <!-- <div class="error" id="nameErr"></div> -->
-                                <input class="rg-input" name="login-email" id="login-email" placeholder="Email" onfocus="setstyle('login-email')" onblur="clearstyle('login-email')" />
+                                <input class="rg-input" name="login-email" id="login-email" placeholder="Email" onfocus="setstyle('login-email')" onblur="clearstyle('login-email')" /> 
                                 <span class="err">Your Email Address</span>
                                 <div class="error" id="emailErr"></div>
                                 <input class="rg-input rg-input-anim" name="password" id="password" type="password" placeholder="Password"  onfocus="setstyle('password')" onblur="clearstyle('password')" />
                                 <div class="error" id="mobileErr"></div>
                                  <br>
-                                <button type="submit" id="submit"  class="btn-submit" placeholder="Sign In">Sign In</button>
+                                <button type="submit" id="submit"  class="btn-submit"  placeholder="Sign In">Sign In</button>
                                 <span class="forgot" style="font-weight: bold;letter-spacing: 1px;font-size: 13px;color:#585858;padding:20px 0px">Forget your password?</span>
                             </form>
                         </div>    

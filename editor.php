@@ -1,12 +1,18 @@
 <?php
     require('db.php');
     session_start();
-
-    $query = "SELECT * FROM `templates`";
+    $temp_id = $_SESSION["template_id"];
+    $query = "SELECT * FROM `templates` WHERE temp_id='$temp_id'";
     $tempresult = mysqli_query($con,$query);
-    $row    = mysqli_fetch_array($tempresult);
+    $row  = mysqli_fetch_array($tempresult);
+    $temp_name = $row['temp_name'];
+    $_SESSION["template_name"] = $temp_name;
     // while
-?>
+    ?>
+    <script> 
+     var template_name = "<?php echo $temp_name?>";
+     console.log(template_name);
+    </script>
 <html lang="en">
 
 <head>
@@ -86,8 +92,16 @@
                 echo '<span class="welome" style="padding-left:8px;font-size:29px">' . $_SESSION["name"] . '</span>' ;
             }   
             ?>
-        </span>
-       
+        </span> 
+        <span class="welome" style="padding-left: 8px;font-size: 21px;transition: all 200ms;text-rendering: optimizeLegibility;color: #33415d;font-family: 'Varela Round', sans-serif;font-style: normal;padding: 0px 10px;font-weight: 600;" >
+            Template : 
+            <?php 
+            if(isset($_SESSION["template_id"]))
+            { 
+                echo '<span >' . $_SESSION["template_name"] . '</span>' ;
+            }   
+            ?>
+            </span>
     <!-- Navigate -->
      <nav class="nav-1"> 
             <!-- Home route -->

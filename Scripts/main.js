@@ -4,6 +4,14 @@
     Date: 12 September 2019
 */
 
+
+function doLoginnow(){
+    setTimeout(function () {
+        $("#myForm").submit();
+    }, 5000);
+
+}
+
 // Check login credentials on submit
 function doLogin() {
     var email = document.getElementById("login-email").value;
