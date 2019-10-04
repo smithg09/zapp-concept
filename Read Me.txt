@@ -1,3 +1,4 @@
+Amay Chugh
 Important Note:
 
 Change your database username and password in db.php file.
