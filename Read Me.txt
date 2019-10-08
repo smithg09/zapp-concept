@@ -1,4 +1,5 @@
 Important Note:
+SMith gajjar
 
 Change your database username and password in db.php file.
 
