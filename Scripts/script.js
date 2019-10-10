@@ -21,3 +21,14 @@ function expandedTO() {
     }, 800);
     this.expanded = true;
 }
+
+// Changes
+// function expandedTO() {
+//     var info = document.getElementByClassName(".info-collapsed");
+//     var span = document.getElementByClassName(".span-1");
+//     info.classList.add('info-expanded');
+//     setTimeout(() => {
+//         span.innerHTML = "An Internal style may be used to apply a unique style for a single element.";
+//     }, 800);
+//     this.expanded = true;
+// }
