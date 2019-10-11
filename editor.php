@@ -120,11 +120,12 @@
                     <div classhttps://github.com/smithg09/zapp-website="dropdown-item" style="margin:0px 19px;display: flex;flex-direction:column;font-size: 15px;align-items: center;justify-content:center;letter-spacing: 1px;font-weight: lighter;">
                         <a class="account-in account" href="#"> </a>
                         <span style=""> <?php  echo $_SESSION["username"] ?> </span>
+                        <span style="font-size: 13px;color: #33415d;letter-spacing: 1.2px;font-weight: bolder;padding-top: 7px;"> <?php  echo $_SESSION["acc_type"] ?> account </span>
                     </div>
                     <div class="dropdown-divider"> </div>   
+                    <a class="dropdown-item" href="accounts.php">Account Settings</a>
                     <a href="#" class="dropdown-item logout"
                             >Log out</a>
-                    <a class="dropdown-item" href="accounts.php">Account Settings</a>
                 </div>
         </div>
             
@@ -139,6 +140,8 @@
         <div class="sidebar" style="padding-top:81px">
             <span style="font-size:15px;color:white"> Add text</span>
             <input type="text" id="addtext" value='' placeholder="Enter Text to add">
+            <input type="color" id="addcolor" value='' placeholder="Enter color to add">
+            <input type="size" id="addsize" value='' type='number' placeholder="Enter size to add">
             <button onclick="add_media('title')">Add Title</button>
             <button onclick="add_media('cable')">Add Cable</button>
             <button onclick="add_media('frog')">Add Frog</button>

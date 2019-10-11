@@ -77,7 +77,7 @@
     <div class="unsupported">
         <h1>Not supported on mobile devices yet.</h1>
     </div>
-    <main>
+    <main >
     
     <!-- Navigation bar section -->
     <header class="col-12 angular-header2">
@@ -104,17 +104,17 @@
             -->
             <div class="dropdown show">
                 
-                <a class=" dropdown-toggle account" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="dropdown-toggle account" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </a>
                     
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="border:none;box-shadow:0px 0px 10px rgba(200,200,200,0.8);left:-10px !important">
                     <div classhttps://github.com/smithg09/zapp-website="dropdown-item" style="margin:0px 19px;display: flex;flex-direction:column;font-size: 15px;align-items: center;justify-content:center;letter-spacing: 1px;font-weight: lighter;">
                         <a class="account-in account" href="#"> </a>
                         <span style=""> <?php  echo $_SESSION["username"] ?> </span>
+                        <span style="font-size: 13px;color: #33415d;letter-spacing: 1.2px;font-weight: bolder;padding-top: 7px;"> <?php  echo $_SESSION["acc_type"] ?> account </span>
                     </div>
                     <div class="dropdown-divider"> </div>   
-                    <a href="#" class="dropdown-item logout"
-                            >Log out</a>
+                    <a href="#" class="dropdown-item logout">Log out</a>
                     <a class="dropdown-item" href="accounts.php">Account Settings</a>
                 </div>
         </div>
@@ -124,14 +124,14 @@
         </nav>
     </header>
 
-    <section class="temp_sec" style="padding-top:100px">
+    <section class="temp_sec" style="padding-top:100px;min-height: 100vh">
             <h1 class="temp">Pick a Template</h1>
             
             <form action="templateroute.php" method="POST" style="margin-top:0"> 
-                <div id="main-content">
+                <div id="main-content" style="min-height:50vh">
                 
                 </div>
-                <button type="submit" class="temp_submit"> Next </button>
+                <button type="submit" class="temp_submit"> Next 🙄 </button>
             </form>
 
     </section>
@@ -248,10 +248,11 @@
 
                 var p = document.createElement("p");
                 p.innerHTML = element.temp_name;
+                p.classList.add("template_name");
 
-                // var img = document.createElement("img");
-                // img.setAttribute("src",element.imgurl);
-                // img.classList.add('img-temp');
+                var img = document.createElement("img");
+                img.setAttribute("src",'images/'+ element.dis_img + '.jpg');
+                img.classList.add('img-temp');
                 if(element.acc_type == 'premium' )   {
                     var premiumelem = document.createElement('p');
                     premiumelem.classList.add('premiumdiv');
@@ -259,7 +260,7 @@
                     container.appendChild(premiumelem);  
                 }
                 container.appendChild(p);
-                // container.appendChild(img);
+                container.appendChild(img);
                 maincontainer.appendChild(input);
 
                 maincontainer.appendChild(container);

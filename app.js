@@ -4,14 +4,17 @@
 var mm_player;
 function mm_update_textarea() {
   var textarea = document.getElementById('mm-textarea');
+  
   textarea.value = JSON.stringify(mm_player.mash, null, '\t');
 }
 function add_media(id, text = null) {
   
   var size = 0.4;
   // var text = "DEMO";
-  var img = document.getElementById('addtext').value
-  
+  var text = document.getElementById('addtext').value;
+  var color = document.getElementById('addcolor').value;
+  var  size = document.getElementById('addsize').value;
+   
   var media = {
     'title': {
       "label": "Title", 
@@ -20,9 +23,9 @@ function add_media(id, text = null) {
       "properties": {
         "string": { "type": "string", "value": text },
         "size": { "type": "fontsize", "value": size },
-        "x": { "type": "number", "value": 0.1 },
-        "y": { "type": "number", "value": 0.3  },
-        "color": { "type": "rgba", "value": "red" },
+        "x": { "type": "number", "value": 0.6 },
+        "y": { "type": "number", "value": 0.6    },
+        "color": { "type": "rgba", "value": color },
         "shadowcolor": { "type": "rgba", "value": "rgba(0,0,0,0)" },
         "shadowx": { "type": "number", "value": 0 },
         "shadowy": { "type": "number", "value": 0 },
@@ -80,7 +83,7 @@ function add_media(id, text = null) {
       'label': 'Cable',
       'type': 'image',
       'id': 'cable',
-      'url': 'media/img/' + img + '.jpg'
+      // 'url': 'media/img/' + img + '.jpg'
     },
     'frog': {
       'label': 'Frog',

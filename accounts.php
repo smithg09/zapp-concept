@@ -1,12 +1,22 @@
 <?php
     require('db.php');
     session_start();
-
-    $query = "SELECT * FROM `templates`";
-    $tempresult = mysqli_query($con,$query);
-    $row    = mysqli_fetch_array($tempresult);
-    // while
+    $acc_id = $_SESSION['acc_id'];
+    // echo $acc_id;
+    $userquery = "SELECT * FROM `users` WHERE acc_id ='$acc_id'";
+    $userresult = mysqli_query($con,$userquery);
+    $userrow    = mysqli_fetch_array($userresult);
+    $emparray = array();
+    while($row = mysqli_fetch_assoc($userresult))
+    {   
+        $emparray[] = $row;
+        // echo $row[0];
+    }
 ?>
+<script> 
+    var user_detail = <?php   echo json_encode($userrow); ?>;
+    console.log(user_detail);
+</script>
 <html lang="en">
 
 <head>
@@ -29,7 +39,7 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" type="text/css" href="templatestyle.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -98,53 +108,49 @@
             </div>
             <div class="accounts-wrapper" >
                 <div class="accdetails">
+                <a class="account" href="#"> </a>
+                <hr>
                     <div class="username">
                         <span class="userheader"> USERNAME </span>
                         <div class="inputwrapper">
-                            <input type="text" class="userinput usernamechangeinput" id="usernamechangeinput" disabled>
-                            <script>
-                                document.getElementById("usernamechangeinput").value = "<?php  echo $_SESSION["name"] ?>";
-                            </script>
+                            <input type="text" class="username userinput usernamechangeinput" id=" usernamechangeinput" value="new"  disabled>
                         </div>
                     </div>
                     <div class="username">
                         <span class="userheader"> EMAIL </span>
                         <div class="inputwrapper">
-                            <input type="text" class="userinput" id="emailchangeinput" placeholder="smith" disabled>
-                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;">Change</span>
+                            <input type="text" class="email userinput" id=" emailchangeinput" placeholder="smith" value="<?php echo user_detail[0].email ?>" disabled>
+                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;" onclick="updatedetails('emailchangeinput')">Change</span>
                             <span class="usernamechange" style="margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">Submit</span>
-                            <script>
-                                document.getElementById("emailchangeinput").value = "<?php  echo $_SESSION["username"] ?>";
-                            </script>
                         </div>
                     </div>
                     <div class="username">
                         <span class="userheader"> PASSWORD </span>
                         <div class="inputwrapper">
-                            <input type="password" value="safhjasyvf" class="userinput" disabled>
-                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;">Change</span>
+                            <input type="password" value="" class="password userinput" id=" passchangeinput" value="<?php echo user_detail[0].password ?>" disabled>
+                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;" onclick="updatedetails('passchangeinput')">Change</span>
                             <span class="usernamechange" style="margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">Submit</span>
                         </div> 
                     </div>
                     <div class="username">
                         <span class="userheader"> ACCOUNT TYPE </span>
-                        <div class="inputwrapper">
-                            <input type="text" class="userinput" disabled>
-                            <span style="margin-left: 20px;color: #435069;cursor: pointer;font-size: 15px;">Upgrade</span>
+                        <div class="inputwrapper" style="display:flex">
+                            <input type="text" class="userinput acc_type" id=""  disabled>
+                            <span style="margin-left: 20px;color: #969696;font-weight:bold;cursor: pointer;font-size: 15px;"><a href="pricing.php" style="font-weight: bold">Upgrade</a></span>
                         </div> 
                     </div>
                     <div class="username">
                         <span class="userheader"> ACCOUNT ID </span>
                         <div class="inputwrapper">
-                            <input type="text" class="userinput" disabled>
+                            <input type="text" class="userinput acc_id" id="acc_id" disabled>
 
                         </div> 
                     </div>
                     <div class="username">
                         <span class="userheader"> PHONE NUMBER </span>
                         <div class="inputwrapper">
-                            <input type="text" class="userinput" disabled>
-                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;">Change</span>
+                            <input type="text" class="userinput phnochangeinput phoneno" id="phoneno" disabled>
+                            <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;" onclick="updatedetails('phnochangeinput')">Change</span>
                             <span class="usernamechange" style="margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">Submit</span>
                         </div> 
                     </div>
@@ -176,5 +182,18 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            $(window).on('load',function () {
+                
+                $('.username').val(user_detail.username);
+                $('.email').val(user_detail.email);
+                $('.password').val(user_detail.password);
+                $('.acc_type').val(user_detail.acc_type);
+                $('.acc_id').val(user_detail.acc_id);
+                $('.phoneno').val(user_detail.phone_no);
+            })
+
+        </script>
     </body>
 </html>

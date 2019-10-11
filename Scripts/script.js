@@ -1,3 +1,4 @@
+$('#toast').toast('hide');
 
 var expanded = false;
 function expand() {

@@ -12,6 +12,23 @@ function doLoginnow(){
 
 }
 
+
+//Accounts Updation scripts.
+var chcan = false;
+function updatedetails(inputid) {
+    
+            if (!chcan) {
+                chcan = true;
+                document.getElementById(inputid).disabled = false;
+                document.getElementById(inputid).innerText = "Cancel";
+            }
+            else {
+                chcan = false;
+                document.getElementById(inputid).disabled = true;
+                document.getElementById(inputid).innerHTML = "Change";
+
+            }
+}
 // Check login credentials on submit
 function doLogin() {
     var email = document.getElementById("login-email").value;

@@ -12,7 +12,11 @@
             Title: qZapp. Concept Webpage.
             Date: 12 September 2019 
         -->
-    <script src="https://kit.fontawesome.com/f5df066031.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ <script src="https://kit.fontawesome.com/f5df066031.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,6 +54,36 @@
     </div>
 </div>
 
+<?php 
+    if(isset($_GET['error'])==true) {
+?>
+<div id="toast" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-delay="10000">
+  <div class="toast-header">
+    <div style="display:flex;justify-content:center;align-items:center;width: 24px;height: 24px;" class="rounded mr-2"> 😔</div>
+    <strong class="mr-auto">Login Error</strong>
+    <small>Just now</small>
+    <button onclick="hidet()" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+      Incorrect username or password <br>
+      <span style="color: #3c454e;cursor: pointer;" onclick="toggle_login()"> Click here to <u style="color:slategrey">Try again </u> </span> 
+    
+  </div>
+</div>   
+ <?php
+    }
+    ?>
+    <script> 
+    function hidet() {
+        $('.toast').hide();
+        
+    }
+    setTimeout(() => {
+            $('.toast').fadeOut();
+        }, 13000);
+    </script>
     <!-- 
         Display Upsupported message on screen size < 800 pixels
      -->
@@ -78,6 +112,9 @@
             <a href="#" class="toggle" onclick="setHome()" style="font-weight: bold;text-decoration: none;margin: 0px 20px">Home</a>
             <!-- contact-us route -->
             <a href="#contact-us" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Contact Us</a>
+            <a href="portfolio/index.html" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">About Us</a>
+            <a href="pricing.php" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Pricing</a>
+            
             <!-- Toggle Sign In route 
                 Remove Illustration => Start animation => Display Sign In     
             -->
@@ -89,6 +126,7 @@
             <a href="Registernew.php" style="text-decoration: none" class="Register">Sign Up</a>
         </nav>
     </header>
+
 
     <section style="padding-top:100px">
         <div class="heading" id="About">

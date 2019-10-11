@@ -251,6 +251,29 @@ form {
   animation: Login 0.5s ease-in-out;
 }
 
+.toast {
+  margin: 20px;
+  margin-bottom: 90px;
+  position: fixed !important;  
+    bottom: 90 !important;
+    right: 0 !important;
+    z-index: 999;
+    opacity: 1;
+    border: none;
+    box-shadow: 0 0.25rem 5px rgba(0,0,0,.2);
+    /* margin-right: 20px !important;
+    margin-bottom: 90px; */
+}
+
+.toast-header {
+  letter-spacing: 0.6px;
+  background: rgba(248,215,218,.85);
+}
+
+.toast-body {
+  letter-spacing: 0.6px;
+  background: #ffebed;
+}
 .rg-input:after {
   transition: all 200ms;
   background: #33415d;

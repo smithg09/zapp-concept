@@ -5,6 +5,7 @@
 */
 
 
+
 $chcan = false;
 $(document).ready(() => {
     $(".usernamechange").click(() => {
@@ -22,14 +23,16 @@ $(document).ready(() => {
 })
 
 $(window).on('load', function () {
+    console.log("Windows load event done!");
     setTimeout(function () {
-        console.log("Windows load event done!");
         $('.preloader').fadeOut('slow');
         $('body').css("overflow", "visible");    
     }, 1000); // set the time here
 });
 
-
+// $(window).on('load', function () {
+//     $()val(text);
+// })
 
 //Expand Customer Support element on click | Add Animation => Display Lorem Ipsum message => Remove Animation
 $(document).ready(() => {
