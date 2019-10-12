@@ -24,4 +24,3 @@ CREATE TABLE IF NOT EXISTS register.`users` (
 Source: http://www.allphptricks.com/
 Javed Ur Rehman
 
-We need to transfer the project to laravel.
