@@ -19,11 +19,21 @@
 		$acc_id = $row['acc_id'];
 		// or die(mysql_error());
 		$rows = mysqli_num_rows($result);
+
+		$teamquery = "SELECT * FROM `teams` WHERE acc_id ='$acc_id'";
+		$teamresult = mysqli_query($con,$teamquery);
+		$team    = mysqli_fetch_array($teamresult);
+		$teamid = $team['team_id'];
+		$teamname = $team['team_name'];
+		
         if($rows==1){
+			$_SESSION['teamname'] = $teamname;
+			$_SESSION['teamid'] = $teamid;
 			$_SESSION['username'] = $email;
 			$_SESSION['name'] = $Name;
 			$_SESSION['acc_type'] = $acc_type;
 			$_SESSION['acc_id']= $acc_id;
+			// $acc_id = $_SESSION['acc_id'];
 			header("Location: templates.php"); // Redirect user to index.php
 			
 			}

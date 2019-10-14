@@ -38,50 +38,57 @@
             <div class="Register-dialog">
                     <span class="regis">Sign Up</span>
                     <!-- Registeration Form -->
-                    <form class="signup-form" name="registration contactForm" action="registration.php" method="post" >
-                            <input  class="rg-input" name="name" type="text"  placeholder="Name" />
-                            <!-- Error message  -->
-                            <div class="error" id="nameErr"></div>
-                            <input class="rg-input" name="email" type="email" placeholder="Email" />
-                            <div class="error" id="emailErr"></div>
-                            <input class="rg-input" name="password" type="password" placeholder="Password" />
-                            <div class="error" id="mobileErr"></div>
-                            <input class="rg-input" name="dob" type="date" placeholder="DOB" name="DateOfBirth" >
-                            <div class="error" id="countryErr"></div>
-                        <textarea  class="rg-input" name="Address" maxlength="500" placeholder="Enter your Address"></textarea>
-                        <div class="error" id="genderErr"></div>
-                        <select name="gender" class="rg-input-select" style="width: calc(100% - 30px)" id="pickup_place" name="pickup_place">
-                                    <option value="" disabled selected>Select Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            <div class="error" id="genderErr2"></div>   <br>
-                        <button class="btn-submit" type="submit" name="btn-signup">Sign Up</button>
-                    </form>
+                    <form class="signup-form" style="display:flex;flex-direction:row" name="registration contactForm" action="registration.php" method="post" >
+                    <div class="signup-wrapper" style="width:100%">
+                        <input  class="rg-input" name="username" type="text"  placeholder="Username" required />
+                                <!-- Error message  -->
+                                <div class="error" id="nameErr"></div>
+                                <input class="rg-input" name="email" type="email" placeholder="Email" />
+                                <div class="error" id="emailErr"></div>
+                                <input class="rg-input" name="password" type="password" placeholder="Password" />
+                                <div class="error" id="mobileErr"></div>
+                                <input class="rg-input" name="dob" type="date" placeholder="DOB" name="DateOfBirth" >
+                                <div class="error" id="countryErr"></div>
+                            <textarea  class="rg-input" type="number" name="number" maxlength="500" placeholder="Phone number"></textarea>
+                            <div class="error" id="genderErr"></div>
+                            <select name="gender" class="rg-input-select" style="width: calc(100% - 30px)" id="pickup_place" >
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                <div class="error" id="genderErr2"></div>   <br>
+                                <button class="btn-submit" type="submit" onsubmit="validateForm()" name="btn-signup">Sign Up</button>
+                            </div>  
+                            <!-- <div class="team-wrapper" style="width:50%">
+                                 <input  class="rg-input" name="team_id" type="text"  placeholder="Team id" required />
+                                 <input  class="rg-input" name="team_name" type="text"  placeholder="Team name" required/>
+                                 <input  class="rg-input" name="name" type="text"  placeholder="Name" />
+                            </div>       -->
+                        </form>
             </div>
         </div>
     </div>
-    <div class="info-collapsed" onclick="expand()" >
+    <!-- <div class="info-collapsed" onclick="expand()" >
         <img class="img" src="465293-PGDOIV-851.jpg"/>
-    </div>
+    </div> -->
     <!-- Webpage Footer Section       -->
     <footer class="angular-footer" >
         <div class="info">
-                Made with  <img src="love.svg" style="margin: 10px 5px;width:25px;height: 45px"> </img>by Smith  
+                Made with  <img src="images/love.svg" style="margin: 10px 5px;width:25px;height: 45px"> </img>by ZZap Team  
        </div>
        <div class="social">
         <a href="https://www.linkedin.com/in/smith-gajjar-5a27716b/">
-            <img class="social-block" src="linkedin.svg" style="width:30px; height:35px;" />
+            <img class="social-block" src="images/linkedin.svg" style="width:30px; height:35px;" />
         </a> 
         <a href="https://www.facebook.com/smithgajjar">
-            <img class="social-block" src="facebook (1).svg" style="width:30px; height:35px;" />
+            <img class="social-block" src="images/facebook (1).svg" style="width:30px; height:35px;" />
         </a> 
         <a href="https://twitter.com/smithgajjar3">
-            <img class="social-block" src="twitter.svg" style="width:30px; height:35px;" />
+            <img class="social-block" src="images/twitter.svg" style="width:30px; height:35px;" />
         </a> 
         <a href="https://www.instagram.com/smith.gajjar09/?hl=en">
             <div class="instagram">
-                <img class="insta" src="instagram.svg"  />
+                <img class="insta" src="images/instagram.svg"  />
             </div>
         </a>
        </div>
@@ -95,12 +102,12 @@
                     // Defining a function to validate form 
                     function validateForm() {
                         // Retrieving the values of form elements 
-                        var name = document.contactForm.name.value;
+                        var name = document.contactForm.username.value;
                         var email = document.contactForm.email.value;
                         var password = document.contactForm.password.value;
                         var dob = document.contactForm.dob.value;
                         var gender = document.contactForm.gender.value;
-                        var Address = document.contactForm.Address.value;
+                        var Address = document.contactForm.number.value;
 
                         // Defining error variables with a default value
                         var nameErr = emailErr = mobileErr = countryErr = genderErr = genderErr2 = true;
@@ -156,7 +163,7 @@
 
                         // Validate Address
                         if (Address == "") {
-                            printError("genderErr", "Please enter your address");
+                            printError("genderErr", "Please enter your Number");
                         } else {
                             printError("genderErr", "");
                             genderErr = false;

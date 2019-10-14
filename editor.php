@@ -2,16 +2,28 @@
     require('db.php');
     session_start();
     $temp_id = $_SESSION["template_id"];
-    $query = "SELECT * FROM `templates` WHERE temp_id='$temp_id'";
+    echo $temp_id;
+    $query = "SELECT temp.temp_id, temp.temp_name as tempname, temp_images.img, temp_text.text_msg FROM templates as temp INNER JOIN temp_images ON temp_images.temp_id = temp.temp_id INNER JOIN temp_text ON temp_text.temp_id = temp.temp_id WHERE temp.temp_id='$temp_id'";
     $tempresult = mysqli_query($con,$query);
-    $row  = mysqli_fetch_array($tempresult);
-    $temp_name = $row['temp_name'];
+    // $row  = mysqli_fetch_array($tempresult);
+    $emparray = array();
+    while($row = mysqli_fetch_assoc($tempresult))
+    {
+        $emparray[] = $row;
+    }
+    
+    $temp_name = $row['temp.tempname'];
     $_SESSION["template_name"] = $temp_name;
+    
+    
     // while
     ?>
-    <script> 
-     var template_name = "<?php echo $temp_name?>";
-     console.log(template_name);
+    <script>
+         var cur_template = <?php   echo json_encode($emparray); ?>;
+        console.log(cur_template);
+        var template_name = "<?php echo $temp_name?>";
+        console.log(template_name);
+       
     </script>
 <html lang="en">
 
@@ -98,7 +110,7 @@
             <?php 
             if(isset($_SESSION["template_id"]))
             { 
-                echo '<span >' . $_SESSION["template_name"] . '</span>' ;
+                echo '<span><script>document.write(cur_template[0].tempname)</script></span>' ;
             }   
             ?>
             </span>
@@ -137,24 +149,59 @@
     
     <!-- Main Editor -->
     <div class="editorwrapper">
-        <div class="sidebar" style="padding-top:81px">
-            <span style="font-size:15px;color:white"> Add text</span>
-            <input type="text" id="addtext" value='' placeholder="Enter Text to add">
-            <input type="color" id="addcolor" value='' placeholder="Enter color to add">
-            <input type="size" id="addsize" value='' type='number' placeholder="Enter size to add">
-            <button onclick="add_media('title')">Add Title</button>
-            <button onclick="add_media('cable')">Add Cable</button>
-            <button onclick="add_media('frog')">Add Frog</button>
-            <button onclick="add_media('globe')">Add Globe</button>
+        <div class="sidebar" style="padding:16px;padding-top:81px">
+            <span style="font-size: 25px; letter-spacing: 1px;font-weight: bolder;color: white;font-family: 'Varela Round', sans-serif;">Text properties</span>
+            <input type="text" style="height:38px" class="rg-input" id="addtext" value='' placeholder="Enter Text to add" required>
+            <input type="color" style="height:38px" class="rg-input" id="addcolor" value='#FFFFFF' placeholder="Enter color to add" required>
+            <select name="size" style="height:38px;width: calc(100% - 30px)" class="rg-input-select" id="addsize">
+                <option value="0.1">1</option>
+                <option value="0.15">2</option>
+                <option value="0.2">3</option>
+                <option value="0.25">4</option> 
+                <option value="0.3">5</option>
+                <option value="0.35">6</option>
+                <option value="0.4">7</option>
+                <option value="0.45">8</option>
+                <option value="0.5">9</option>
+                <option value="0.55">10</option> 
+                <option value="0.6">11</option>
+                <option value="0.65">12</option>
+            </select>
+            <!-- <input type="size" id="addsize" value='' type='number' placeholder="Enter size to add"> -->
+            <button class="editor-btn"   onclick="add_media('title')">Add Title</button><br>
+            
+            <span style="font-size: 25px; letter-spacing: 1px;font-weight: bolder;color: white;font-family: 'Varela Round', sans-serif;">Images </span><br>
+            <!-- <input type="text" style="height:38px" class="rg-input" id="addimage" value='' placeholder="Enter Text to add" required> -->
+            <div class="addimg">
+                <button style="outline:none" class="btn-image" id="Birthday" onclick="add_media('Birthday')" value="birthday.jpg">Birthday</button>
+                <button style="outline:none" class="btn-image" id="NoteBook" onclick="add_media('NoteBook')" value="build.jpg">NoteBook</button>
+                <button style="outline:none" class="btn-image" id="Frog" onclick="add_media('Frog')" value="frog.jpg">Frog</button>
+                <button style="outline:none" class="btn-image" id="Working" onclick="add_media('Working')" value="cor.jpg">Working Employees</button>
+                <button style="outline:none" class="btn-image" id="Dentist" onclick="add_media('Dentist')" value="dental.jpg">Dentist</button> 
+                <button style="outline:none" class="btn-image" id="Dussehra" onclick="add_media('Dussehra')" value="duss.jpg">Dussehra</button>
+                <button style="outline:none" class="btn-image" id="Gandhi"onclick="add_media('Gandhi')" value="gandhi.jpg">Gandhi</button>
+                <!-- <button style="outline:none" class="btn-image" id="Birthday" onclick="add_media('Dentist')" value="dental.jpg">Dentist</button>  -->
+                <button style="outline:none" class="btn-image" id="Online" onclick="add_media('Online')" value="oncourse.jpg">Online Course ad</button> 
+                <button style="outline:none" class="btn-image" id="Globe" onclick="add_media('Globe')" value="globe.jpg">Globe</button>
+                <button style="outline:none" class="btn-image" id="Instagram" onclick="add_media('Instagram')" value="instagram.svg">Instagram</button>
+                <button style="outline:none" class="btn-image" id="New" onclick="add_media('New')" value="newyear.jpg">New Year</button>
+                <button style="outline:none" class="btn-image" id="Air" onclick="add_media('Air')" value="photo-1504596217249-cef2ad2d6b53.jpg">Air Ballons</button>
+                <button style="outline:none" class="btn-image" id="Robot" onclick="add_media('Robot')" value="robo.jpg">Robot</button>
+                <button style="outline:none" class="btn-image" id="School" onclick="add_media('School')" value="school.jpg">Back To School</button>
+                <button style="outline:none" class="btn-image" id="Gif" onclick="add_media('Gif')" value="cas.gif">Gif</button>
+
+            </div>
+            <!-- <button class="editor-btn" onclick="add_media('frog')">Add Images</button>
+            <button class="editor-btn" onclick="add_media('custom')">Add Images</button> -->
         </div>
         <div class="maineditorsec">
-            <div class="videowrapper">
+            <div class="videowrapper" style="border: none;border-radius: 8px;overflow: hidden;">
                 <canvas id='mm-canvas'></canvas>
                 <textarea style="display:none" id='mm-textarea'></textarea>
             </div>
-            <div style="display:flex;flex-direction:column">
-                <input type="range" step="0.001" value="0" min="0" max="1" oninput="mm_player.position=this.value" />
-                <button onclick="mm_player.paused = !mm_player.paused">Play/Pause</button>
+            <div style="display:flex;flex-direction:column;align-items:center">
+                <input type="range" style="padding:0" step="0.001" value="0" min="0" max="1" oninput="mm_player.position=this.value" />
+                <button class="editor-btn" onclick="mm_player.paused = !mm_player.paused">Play/Pause</button>
             </div>
         </div>
     </div>
@@ -174,7 +221,14 @@
             recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span>
         </div>
     </div>
-
+<script> 
+        $(document).ready(() => {
+            setTimeout(() => {
+                add_media('title',cur_template[0].text_msg);
+                add_media('cable',cur_template[0].img); 
+            }, 600);
+        })
+    </script>
     <!-- Scroll to top of the page  -->
     <div class="scroll-top">
         <img class="img" src="images/scroll_top.svg" />

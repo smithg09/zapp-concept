@@ -1,65 +1,35 @@
 <?php
 session_start();
-if(isset($_SESSION['user'])!="")
-{
-	header("Location: home.php");
-}
 include_once 'db.php';
 
 if(isset($_POST['btn-signup']))
 {
-	$uname = mysqli_real_escape_string($con, $_POST['uname']);
+	$username = mysqli_real_escape_string($con, $_POST['username']);
 	$email = mysqli_real_escape_string($con, $_POST['email']);
-	$upass = md5(mysqli_real_escape_string($con, $_POST['pass']));
+	$password = md5(mysqli_real_escape_string($con, $_POST['password']));
+	$phoneno = mysqli_real_escape_string($con, $_POST['number']);
+	// $email = mysqli_real_escape_string($con, $_POST['email']);
+	$gender = mysqli_real_escape_string($con, $_POST['gender']);
+	$team_id = mysqli_real_escape_string($con, $_POST['team_id']);
+	$team_name = mysqli_real_escape_string($con, $_POST['team_name']);
 	
-	if(mysqli_query($con, "INSERT INTO users(email,password,name) VALUES('".$uname."','".$email."','".$upass."')"))
-	{
-            $msg = 'Congratulation you have successfully registered.';
-		
-        
-       
+	$check_register = mysqli_query($con, "INSERT INTO users(username,email,password,phone_no,gender) VALUES('".$username."','".$email."','".$password."','".$phoneno."','".$gender."')");
+	
+	// $query = "SELECT * FROM `users` WHERE email='$email' and password='".md5($password)."'";
+	// $result = mysqli_query($con,$query);
+	// $row    = mysqli_fetch_array($result);
+	// $acc_id = $row['acc_id'];
+	// echo "new : " .$acc_id;
+	// $check_register_team = mysqli_query($con, "INSERT INTO `teams` (`team_id`, `team_name`, `acc_id`)VALUES('".$team_id."','".$team_name."','".$acc_id."'");
+	
+
+	if(  $check_register) {
+		// echo "<script>console.log('Registration done!');</script>";
+		header("Location: index.php?success=1");
 	}
-	else
-	{
-            $msg = 'Error while registering you...';
-	
-       
-        
+	else {
+		echo "console.log('error');";
 	}
 }
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login & Registration System</title>
-<link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
-<body>
-<center>
-<div id="login-form">
-<form method="post">
-    <?php echo @$msg;?>
-<table align="center" width="30%" border="0">
-<tr>
-<td><input type="text" name="uname" placeholder="User Name" required /></td>
-</tr>
-<tr>
-<td><input type="email" name="email" placeholder="Your Email" required /></td>
-</tr>
-<tr>
-<td><input type="password" name="pass" placeholder="Your Password" required /></td>
-</tr>
-<tr>
-<td><button type="submit" name="btn-signup">Sign Me Up</button></td>
-</tr>
-<tr>
-<td><a href="index.php">Sign In Here</a></td>
-</tr>
-</table>
-</form>
-</div>
-</center>
-</body>
-</html>
+?>

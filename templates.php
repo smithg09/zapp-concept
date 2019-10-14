@@ -48,7 +48,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="preloader.css">
-    
+<script src> </script>
 </head>
 <!-- Invoke toggle function on scroll to compress navigation bar -->
 <body id="body" style="display:block">
@@ -126,10 +126,21 @@
 
     <section class="temp_sec" style="padding-top:100px;min-height: 100vh">
             <h1 class="temp">Pick a Template</h1>
-            
+            <div class="search">
+                <div class="search-box">
+                    <input type="text" class="searchstyle" id="search" autocomplete="off" placeholder="Search templates..." />
+                    <!-- <div class="result"></div> -->
+                </div>
+            </div>
             <form action="templateroute.php" method="POST" style="margin-top:0"> 
                 <div id="main-content" style="min-height:50vh">
-                
+                    <div class="nomatch ">
+                        <img src="images/notemp.svg" alt="notemp" style="width:210px;height:210px" > <br>
+                        Sorry, no results found!
+                        <p style="color: #878787;font-size: 20px;margin: 10px;">
+                            Please check the spelling or try searching for something else 
+                        </p>
+                </div>
                 </div>
                 <button type="submit" class="temp_submit"> Next 🙄 </button>
             </form>
@@ -182,8 +193,92 @@
     </footer>
     </main>
     <script>
+
+/**
+* Execute a function given a delay time
+* 
+* @param {type} func
+* @param {type} wait
+* @param {type} immediate
+* @returns {Function}
+*/
+var debounce = function (func, wait, immediate) {
+     var timeout;
+     return function() {
+         var context = this, args = arguments;
+         var later = function() {
+                 timeout = null;
+                 if (!immediate) func.apply(context, args);
+         };
+         var callNow = immediate && !timeout;
+         clearTimeout(timeout);
+         timeout = setTimeout(later, wait);
+         if (callNow) func.apply(context, args);
+     };
+};
+
+            
+
         var list =  <?php   echo json_encode($emparray); ?>;
         console.log(list);
+
+        $(document).ready(function(){
+   
+    $('.search-box input[type="text"]').on("keyup input",debounce(function(){
+        /* Get input value on change */
+        var inputVal = $(this).val();
+        if(inputVal.length){
+            
+            $.get("backend-search.php", {term: inputVal}).done(function(data){
+                $('.maincontainer').fadeOut();
+                if(data == "No matches found") {
+                    setTimeout(() => {
+                        $(".nomatch").show();
+                        $(".temp_submit").attr("disabled", true);
+                    }, 700);
+                    return;
+                }
+                else {
+                    $(".temp_submit").attr("disabled", false);
+                    $(".nomatch").hide();
+                    var result = $.parseJSON(data);   
+                    console.log(result);
+                        myFunction(result);
+                }   
+         // console.log(data);
+                
+                // myFunction(data);
+               
+               });
+        } 
+        else{
+            // resultDropdown.empty();
+            $('.maincontainer').fadeOut();
+            myFunction(list);
+            $(".nomatch").hide();
+             $(".temp_submit").attr("disabled", false);
+        }
+    },400));
+    
+    // Set search input value on click of result item
+    $(document).on("click", ".result p", function(){    
+        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        
+        // var search = $(this).text();
+        //     var found_names = $.grep(list, function(v) {
+        //         console.log(v);
+        //         return v.temp_name === search ;
+        //     });
+        //     console.log(found_names);
+        //     myFunction(found_names);
+        $(this).parent(".result").empty();
+
+        // var item1 = $(".maincontainer");
+        // $("#main-content").find( item1 ).css( "background-color", "red" );
+    });
+});
+
+
         //    var list = [
         //     {
         //         name: 'SYNC', 
@@ -225,17 +320,18 @@
 
         // console.log(list);
 
-        function myFunction() {
+        function myFunction(listnew) {
             
             // var p = document.getElementsByClassName("head");
             // var image = document.getElementsByClassName("image");
             // var container = document.getElementsByClassName("container");
 
-            list.forEach(element => {
+            listnew.forEach(element => {
                 var node = document.getElementById("main-content");
                 var maincontainer = document.createElement("div");
                 maincontainer.classList.add("maincontainer");
-
+                maincontainer.classList.add(element.temp_id);
+                
                 var container = document.createElement("div");
                 container.classList.add("container");
 
@@ -264,14 +360,14 @@
                 maincontainer.appendChild(input);
 
                 maincontainer.appendChild(container);
-
+                // maincontainer.classList.add(element.temp_name);
                 node.appendChild(maincontainer);
-                
+                // $('.maincontainer').fadeIn();
             })
 
         }
 
-        myFunction();
+        myFunction(list);
     </script>
 </body>
 

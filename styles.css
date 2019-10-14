@@ -276,7 +276,7 @@ form {
 }
 .rg-input:after {
   transition: all 200ms;
-  background: #33415d;
+  /* background: #33415d; */
   width: 88px;
   content: "";
   height: 4px;

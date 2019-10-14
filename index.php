@@ -1,6 +1,18 @@
 <?php
     session_start();
     $msg = "DONE";
+    // require('db.php');
+    // $email = $_GET['email'];
+    // $username = $_GET['username'];
+    // echo $email;
+    // // $query = "SELECT * FROM `users` WHERE email='$email' and username='$username'";
+	// $result = mysqli_query($con,$query);
+	// $row    = mysqli_fetch_array($result);
+	// $acc_id = $row['acc_id'];
+	// echo "new : " .$acc_id;
+	// $check_register_team = mysqli_query($con, "INSERT INTO `teams` (`team_id`, `team_name`, `acc_id`)VALUES('".$team_id."','".$team_name."','".$acc_id."'");
+	
+    
     
 ?>
 <html lang="en">
@@ -111,9 +123,9 @@
             <!-- Home route -->
             <a href="#" class="toggle" onclick="setHome()" style="font-weight: bold;text-decoration: none;margin: 0px 20px">Home</a>
             <!-- contact-us route -->
-            <a href="#contact-us" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Contact Us</a>
-            <a href="portfolio/index.html" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">About Us</a>
             <a href="pricing.php" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Pricing</a>
+            <a href="portfolio/index.html" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">About Us</a>
+            <a href="#contact-us" style="scroll-behavior: smooth;font-weight: bold;text-decoration: none;color: #454545cb;margin:0px 20px" onmouseout="this.style.color='#454545cb'" onmouseover="this.style.color='#33415d'">Contact Us</a>
             
             <!-- Toggle Sign In route 
                 Remove Illustration => Start animation => Display Sign In     
@@ -138,8 +150,8 @@
                         We work  with you to <br>solve your most critical<br>business priorities.
                     </div>
                     <div class="subscript">
-                        We're a team of makers, thinkers, explorers and theatre singers, <br>play with  curiosity and experimentation, using what we learn to create<br>
-                        meaningful digital products that connect with people.
+                        We're a team of makers, thinkers, explorers and Developers, <br>play with  curiosity and experimentation, using what we learn to create<br>
+                        meaningful digital videos of products that connect with people.
                     </div>
                     <div class="link-buttons">
                          <button class="btn-learn" onClick="parent.open('https://dribbble.com/Saikatkumar')" style="outline: none">Learn more</button>
@@ -243,7 +255,7 @@
     <!-- Webpage Footer Section  -->
     <footer class="angular-footer" >
         <div class="info">
-                Made with  <img src="images/love.svg" style="margin: 10px 5px;width:25px;height: 45px"> </img>by Smith  
+                Made with  <img src="images/love.svg" style="margin: 10px 5px;width:25px;height: 45px"> </img>by ZZap Team  
        </div>
        <!-- Social Accounts  -->
        <div class="social">

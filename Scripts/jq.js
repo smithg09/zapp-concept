@@ -34,6 +34,7 @@ $(window).on('load', function () {
 //     $()val(text);
 // })
 
+
 //Expand Customer Support element on click | Add Animation => Display Lorem Ipsum message => Remove Animation
 $(document).ready(() => {
     $(".logout").click(function () {
@@ -101,3 +102,9 @@ $(document).ready(() => {
         return false;
     });
 })
+
+$(document).ready(function () {
+    $(".create-team-btn").click(function () {
+        $(".teamForm").slideToggle();
+    });
+});
