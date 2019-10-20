@@ -15,17 +15,17 @@ function doLoginnow(){
 
 //Accounts Updation scripts.
 var chcan = false;
-function updatedetails(inputid) {
+function updatedetails(inputid,spanid) {
     
             if (!chcan) {
                 chcan = true;
                 document.getElementById(inputid).disabled = false;
-                document.getElementById(inputid).innerText = "Cancel";
+                document.getElementById(spanid).innerText = "Cancel";
             }
             else {
                 chcan = false;
                 document.getElementById(inputid).disabled = true;
-                document.getElementById(inputid).innerHTML = "Change";
+                document.getElementById(spanid).innerHTML = "Change";
 
             }
 }

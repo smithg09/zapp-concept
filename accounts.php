@@ -143,9 +143,9 @@
                         <span class="userheader"> PASSWORD </span>
                         <div class="inputwrapper">
                             
-                            <input type="password" value="" name="pass" class="password userinput" id=" passchangeinput" value="<?php echo user_detail[0].password ?>"  disabled>
-                            <!-- <span style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;" onclick="updatedetails('passchangeinput')">Change</span> -->
-                            <!-- <input  type="submit" class="usernamechange" style="height: 34px;line-height: 1;width: 70px;margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;"> -->
+                            <input type="password" value="" name="re_password" class="password userinput" id="passchangeinput" value="<?php echo user_detail[0].password ?>"  disabled>
+                            <span id="passchangespan" style="margin-left: 20px;color: #969696;cursor: pointer;font-size: 15px;" onclick="updatedetails('passchangeinput','passchangespan')">Change</span>
+                            <input  type="submit" class="usernamechange" style="height: 34px;line-height: 1;width: 70px;margin-left: 20px;color: #969696;cursor: pointer;padding:5px;font-size: 15px;border-radius: 4px;border: 1.2px solid lightgrey;">
                         </div> 
                     </div>
                     </form>
